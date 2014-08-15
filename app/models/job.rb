@@ -5,8 +5,5 @@ class Job < ActiveRecord::Base
   def initialize(arguments = {})
     super
     self.bitcoin_invoice = BitcoinInvoice.create()
-    puts "[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]"
-    puts self.bitcoin_invoice.inspect
-    puts "[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]"
   end
 end
