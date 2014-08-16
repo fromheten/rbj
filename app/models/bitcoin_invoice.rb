@@ -1,6 +1,8 @@
 class BitcoinInvoice < ActiveRecord::Base
   belongs_to :job
   # validates_presence_of :job
+  attr_reader :bitpay_id, :bitpay_url
+  attr_accessor :bitpay_invoice
 
   def initialize(arguments = {}, options = {})
     super
@@ -9,8 +11,10 @@ class BitcoinInvoice < ActiveRecord::Base
     @bitpay_invoice = @bitpay_client.post('invoice', {
       price: 0.01,
       currency: 'USD',
-      redirectURL: "http://google.com/jobs/#{self.job_id}/"
+      #FIXME
+      redirectURL: "http://google.com/jobs/#{self.job_id}"
     })
+    @bitpay_id = @bitpay_invoice[:id]
   end
 
   def is_paid?

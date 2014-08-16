@@ -28,7 +28,14 @@ class JobsController < ApplicationController
 
     respond_to do |format|
       if @job.save
-        format.html { redirect_to @job, notice: 'Job was successfully created.' }
+        puts "[[[[[[[[[[[[[[[[[[[]]]]]]]]]]]]]]]]]]]"
+        puts @job.bitcoin_invoice.bitpay_invoice["url"]
+        @job.bitcoin_invoice.bitpay_invoice["redirectURL"] = url_for(@job)
+        puts @job.bitcoin_invoice.bitpay_invoice["redirectURL"]
+        puts "[[[[[[[[[[[[[[[[[[[]]]]]]]]]]]]]]]]]]]"
+
+        format.html { redirect_to @job.bitcoin_invoice.bitpay_invoice["url"], notice: 'Job was successfully created.' }
+        # format.html { redirect_to @job, notice: 'Job was successfully created.' }
         format.json { render :show, status: :created, location: @job }
       else
         format.html { render :new }
