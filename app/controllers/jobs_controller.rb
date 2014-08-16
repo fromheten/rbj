@@ -10,6 +10,14 @@ class JobsController < ApplicationController
   # GET /jobs/1
   # GET /jobs/1.json
   def show
+    # If job is younger than 15 minutes, check payment
+    if(Time.now.between?(@job.created_at.time, @job.created_at.time + 16.minute))
+      flash[:notice] = "Checking payment"
+      @job.check_payment
+    else
+      flash[:notice] = "Not checking payment"
+      @job.paid
+    end
   end
 
   # GET /jobs/new
@@ -28,18 +36,12 @@ class JobsController < ApplicationController
 
     respond_to do |format|
       if @job.save
-        puts "[[[[[[[[[[[[[[[[[[[]]]]]]]]]]]]]]]]]]]"
-        puts @job.bitcoin_invoice.bitpay_invoice["url"]
-        @job.bitcoin_invoice.bitpay_invoice["redirectURL"] = url_for(@job)
-        puts @job.bitcoin_invoice.bitpay_invoice["redirectURL"]
-        puts "[[[[[[[[[[[[[[[[[[[]]]]]]]]]]]]]]]]]]]"
-
         format.html { redirect_to @job.bitcoin_invoice.bitpay_invoice["url"], notice: 'Job was successfully created.' }
         # format.html { redirect_to @job, notice: 'Job was successfully created.' }
-        format.json { render :show, status: :created, location: @job }
+        # format.json { render :show, status: :created, location: @job }
       else
         format.html { render :new }
-        format.json { render json: @job.errors, status: :unprocessable_entity }
+        # format.json { render json: @job.errors, status: :unprocessable_entity }
       end
     end
   end

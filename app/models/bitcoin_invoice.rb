@@ -3,23 +3,23 @@ class BitcoinInvoice < ActiveRecord::Base
   # validates_presence_of :job
   attr_reader :bitpay_id, :bitpay_url
   attr_accessor :bitpay_invoice
+  after_create :create_bitpay_objects
 
-  def initialize(arguments = {}, options = {})
-    super
+  def create_bitpay_objects()
     # @bitpay_client = BitPay::Client.new 'OWR0fNlPRA7TphMICYWFqmNnxLAaa22jMhBsUqtew' #REAL ONE
     @bitpay_client = BitPay::Client.new 'vOT1Eq1ULYBWRS35wronKtHMbYYOSXDgLsL6x2U44' #TEST ONE
     @bitpay_invoice = @bitpay_client.post('invoice', {
       price: 0.01,
       currency: 'USD',
       #FIXME
-      redirectURL: "http://google.com/jobs/#{self.job_id}"
+      redirectURL: "http://example.org/jobs/#{job_id}"
     })
-    @bitpay_id = @bitpay_invoice[:id]
+    @bitpay_id = @bitpay_invoice["id"]
   end
 
   def is_paid?
-    status = @bitpay_client.get("invoice/#{@bitpay_invoice["id"]}")["status"]
-    if status == 'paid'
+    invoice = @bitpay_client.get("invoice/#{@bitpay_id}")
+    if invoice["status"] == 'paid'
       return true
     else
       return false
