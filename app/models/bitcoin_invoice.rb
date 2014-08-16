@@ -2,11 +2,15 @@ class BitcoinInvoice < ActiveRecord::Base
   belongs_to :job
   # validates_presence_of :job
 
-  def initialize(arguments = {})
+  def initialize(arguments = {}, options = {})
     super
     # @bitpay_client = BitPay::Client.new 'OWR0fNlPRA7TphMICYWFqmNnxLAaa22jMhBsUqtew' #REAL ONE
     @bitpay_client = BitPay::Client.new 'vOT1Eq1ULYBWRS35wronKtHMbYYOSXDgLsL6x2U44' #TEST ONE
-    @bitpay_invoice = @bitpay_client.post('invoice', {:price => 0.01, :currency => 'USD'})
+    @bitpay_invoice = @bitpay_client.post('invoice', {
+      price: 0.01,
+      currency: 'USD',
+      redirectURL: "http://google.com/jobs/#{self.job_id}/"
+    })
   end
 
   def is_paid?
