@@ -8,7 +8,7 @@ class BitcoinInvoice < ActiveRecord::Base
     super
     # @bitpay_client = BitPay::Client.new 'OWR0fNlPRA7TphMICYWFqmNnxLAaa22jMhBsUqtew' #REAL ONE
     @bitpay_client = BitPay::Client.new 'vOT1Eq1ULYBWRS35wronKtHMbYYOSXDgLsL6x2U44' #TEST ONE
-    @bitpay_invoice = @bitpay_client.post('invoice', {
+    self.bitpay_invoice = @bitpay_client.post('invoice', {
       price: 0.01,
       currency: 'USD',
       #FIXME
