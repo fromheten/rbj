@@ -11,4 +11,8 @@ RSpec.describe Job, :type => :model do
   it 'should have a bitcoin_invoice' do
     expect(@job.bitcoin_invoice.class).to eq(BitcoinInvoice)
   end
+
+  it 'should not be paid when it is just created' do
+    expect(@job.bitcoin_invoice.is_paid?).to eq(false)
+  end
 end

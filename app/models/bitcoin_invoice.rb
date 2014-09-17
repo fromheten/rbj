@@ -20,7 +20,8 @@ class BitcoinInvoice < ActiveRecord::Base
 
   def is_paid?
     status = @bitpay_client.get("invoice/#{@bitpay_invoice["id"]}")["status"]
-    if status == 'paid'
+    Rails.logger.debug  "Checking payment status: #{status}"
+    if (status == 'confirmed' || status == 'paid' || status == 'complete')
       return true
     else
       return false
