@@ -28,14 +28,7 @@ class JobsController < ApplicationController
 
     respond_to do |format|
       if @job.save
-        @job.bitcoin_invoice.bitpay_id = @job.bitcoin_invoice.bitpay_invoice["id"]
         @job.bitcoin_invoice.bitpay_invoice["redirectURL"] = url_for(@job)
-        puts "[[[[[[[[[[[[[[[[[[[ create -> save ]]]]]]]]]]]]]]]]]]]"
-        puts "@job.bitcoin_invoice.bitpay_id: #{@job.bitcoin_invoice.bitpay_id}"
-        puts @job.bitcoin_invoice.bitpay_invoice["url"]
-        puts @job.bitcoin_invoice.bitpay_invoice["id"]
-        puts "[[[[[[[[[[[[[[[[[[[]]]]]]]]]]]]]]]]]]]"
-        @job.save
 
         format.html { redirect_to @job.bitcoin_invoice.bitpay_invoice["url"], notice: 'Job was successfully created.' }
         # format.html { redirect_to @job, notice: 'Job was successfully created.' }

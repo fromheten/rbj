@@ -12,9 +12,9 @@ class BitcoinInvoice < ActiveRecord::Base
       price: 0.01,
       currency: 'USD',
       #FIXME
-      redirectURL: "http://google.com/jobs/#{self.job_id}"
+      redirectURL: "http://example.org/jobs/#{self.job_id}"
     })
-    self.bitpay_id = @bitpay_invoice[:id]
+    self.bitpay_id = @bitpay_invoice["id"]
     self.save
   end
 
