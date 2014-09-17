@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140816002325) do
+ActiveRecord::Schema.define(version: 20140815190337) do
 
   create_table "bitcoin_invoices", force: true do |t|
     t.integer  "job_id"
@@ -21,7 +21,6 @@ ActiveRecord::Schema.define(version: 20140816002325) do
     t.string   "notificationEmail"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "redirect_url"
   end
 
   add_index "bitcoin_invoices", ["job_id"], name: "index_bitcoin_invoices_on_job_id"

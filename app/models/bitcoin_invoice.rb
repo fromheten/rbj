@@ -14,7 +14,8 @@ class BitcoinInvoice < ActiveRecord::Base
       #FIXME
       redirectURL: "http://google.com/jobs/#{self.job_id}"
     })
-    @bitpay_id = @bitpay_invoice[:id]
+    self.bitpay_id = @bitpay_invoice[:id]
+    self.save
   end
 
   def is_paid?
