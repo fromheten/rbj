@@ -6,20 +6,26 @@ class BitcoinInvoice < ActiveRecord::Base
 
   def initialize(arguments = {}, options = {})
     super
-    # @bitpay_client = BitPay::Client.new 'OWR0fNlPRA7TphMICYWFqmNnxLAaa22jMhBsUqtew' #REAL ONE
-    @bitpay_client = BitPay::Client.new 'vOT1Eq1ULYBWRS35wronKtHMbYYOSXDgLsL6x2U44' #TEST ONE
-    self.bitpay_invoice = @bitpay_client.post('invoice', {
+    self.bitpay_invoice = BitcoinInvoice.bitpay_client.post('invoice', {
       price: 0.01,
       currency: 'USD',
       #FIXME
       redirectURL: "http://example.org/jobs/#{self.job_id}"
     })
     self.bitpay_id = @bitpay_invoice["id"]
+    puts "Line 16: #{@bitpay_invoice}, \n#{self.bitpay_id}"
     self.save
   end
 
+  def self.bitpay_client
+    # BitPay::Client.new 'OWR0fNlPRA7TphMICYWFqmNnxLAaa22jMhBsUqtew' #REAL ONE
+    BitPay::Client.new('vOT1Eq1ULYBWRS35wronKtHMbYYOSXDgLsL6x2U44' , {api_uri: "https://test.bitpay.com/api"}) #TEST ONE
+  end
+
   def is_paid?
-    status = @bitpay_client.get("invoice/#{@bitpay_invoice["id"]}")["status"]
+    invoice = BitcoinInvoice.bitpay_client.get("invoice/#{attributes['bitpay_id']}")
+    status = invoice["status"]
+
     Rails.logger.debug  "Checking payment status: #{status}"
     if (status == 'confirmed' || status == 'paid' || status == 'complete')
       return true

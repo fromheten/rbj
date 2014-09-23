@@ -10,6 +10,19 @@ class JobsController < ApplicationController
   # GET /jobs/1
   # GET /jobs/1.json
   def show
+    # If job is younger than 15 minutes, check payment
+    if(Time.now.between?(@job.created_at.time, @job.created_at.time + 16.minute))
+      if @job.bitcoin_invoice.is_paid?
+        @job.paid = true
+      else
+        @job.paid = false
+      end
+      flash[:notice] = "Checking payment #{@job.bitcoin_invoice.is_paid?}. Job.paid: #{@job.paid}"
+    else
+      flash[:notice] = "Not checking payment"
+      @job.paid
+    end
+
   end
 
   # GET /jobs/new
@@ -30,6 +43,8 @@ class JobsController < ApplicationController
       if @job.save
         @job.bitcoin_invoice.bitpay_invoice["redirectURL"] = url_for(@job)
 
+        puts "[[[[[[ jobs_controller.rb ]]]]]]"
+        puts @job.bitcoin_invoice.bitpay_invoice
         format.html { redirect_to @job.bitcoin_invoice.bitpay_invoice["url"], notice: 'Job was successfully created.' }
         # format.html { redirect_to @job, notice: 'Job was successfully created.' }
         format.json { render :show, status: :created, location: @job }
@@ -65,13 +80,13 @@ class JobsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_job
-      @job = Job.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_job
+    @job = Job.find(params[:id])
+  end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def job_params
-      params.require(:job).permit(:title, :headquarters, :job_description, :how_to_apply, :company_name, :company_url, :email, :highlight, :paid)
-    end
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def job_params
+    params.require(:job).permit(:title, :headquarters, :job_description, :how_to_apply, :company_name, :company_url, :email, :highlight, :paid)
+  end
 end
