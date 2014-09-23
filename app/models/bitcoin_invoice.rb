@@ -13,6 +13,7 @@ class BitcoinInvoice < ActiveRecord::Base
       redirectURL: "http://example.org/jobs/#{self.job_id}"
     })
     self.bitpay_id = @bitpay_invoice["id"]
+    puts "Line 16: #{@bitpay_invoice}, \n#{self.bitpay_id}"
     self.save
   end
 
@@ -22,14 +23,9 @@ class BitcoinInvoice < ActiveRecord::Base
   end
 
   def is_paid?
-    invoice = BitcoinInvoice.bitpay_client.get("invoice/#{self.bitpay_id}")
+    invoice = BitcoinInvoice.bitpay_client.get("invoice/#{attributes['bitpay_id']}")
     status = invoice["status"]
-    puts
-    puts "[[[[[[[[ is paid? ]]]]]]]]"
-    puts invoice, status
-    puts BitcoinInvoice.bitpay_client.inspect
-    puts "[[[[[[[[[[[[]]]]]]]]]]]]"
-    puts
+
     Rails.logger.debug  "Checking payment status: #{status}"
     if (status == 'confirmed' || status == 'paid' || status == 'complete')
       return true
