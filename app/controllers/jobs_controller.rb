@@ -14,6 +14,7 @@ class JobsController < ApplicationController
     if(Time.now.between?(@job.created_at.time, @job.created_at.time + 16.minute))
       if @job.bitcoin_invoice.is_paid?
         @job.paid = true
+        @job.save
       else
         @job.paid = false
       end
