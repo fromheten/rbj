@@ -4,7 +4,8 @@ class JobsController < ApplicationController
   # GET /jobs
   # GET /jobs.json
   def index
-    @jobs = Job.all
+    # @jobs = Job.all
+    @jobs = Job.where(paid: true)
   end
 
   # GET /jobs/1
