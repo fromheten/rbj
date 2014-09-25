@@ -5,7 +5,7 @@ class JobsController < ApplicationController
   # GET /jobs.json
   def index
     # @jobs = Job.all
-    @jobs = Job.where(paid: true)
+    @jobs = Job.where(paid: true, created_at: (Time.now - 1.month)..Time.now)
   end
 
   # GET /jobs/1
