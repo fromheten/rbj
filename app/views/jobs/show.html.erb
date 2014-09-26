@@ -1,5 +1,17 @@
 <p id="notice"><%= notice %></p>
 
+<% unless @job.paid %>
+  <div class="please-pay-up">
+    Your ad is ready to be published! <a href=
+      <% if Rails.env.development? %>
+        "https://test.bitpay.com/invoice?id=<%= @job.bitcoin_invoice[:bitpay_id] %>"
+      <% else %>
+        "https://bitpay.com/invoice?id=<%= @job.bitcoin_invoice[:bitpay_id] %>"
+      <% end %>
+       >Click here to go to the last step.</a> After paying the invoice, your ad will be published to the best job seekers there is.
+  </div>
+<% end %>
+
 <p>
   <strong>Title:</strong>
   <%= @job.title %>
