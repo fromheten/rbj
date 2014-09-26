@@ -3,6 +3,6 @@ class JobMailer < ActionMailer::Base
 
   def welcome_email(job)
     @job = job
-    mail(to: "rbj@mailinator.com", subject: "It works!")
+    mail(to: "josefsson.martin@gmail.com", subject: "It works!")
   end
 end

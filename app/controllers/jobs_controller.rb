@@ -45,9 +45,8 @@ class JobsController < ApplicationController
       if @job.save
         @job.bitcoin_invoice.bitpay_invoice["redirectURL"] = url_for(@job)
 
-        puts "[[[[[[ jobs_controller.rb ]]]]]]"
-        puts @job.bitcoin_invoice.bitpay_invoice
         JobMailer.welcome_email(@job).deliver
+
         format.html { redirect_to @job.bitcoin_invoice.bitpay_invoice["url"], notice: 'Job was successfully created.' }
         # format.html { redirect_to @job, notice: 'Job was successfully created.' }
         format.json { render :show, status: :created, location: @job }
