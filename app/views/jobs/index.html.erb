@@ -18,7 +18,7 @@
 
   <tbody>
     <% @jobs.each do |job| %>
-      <tr>
+      <tr class="<% if job.highlight %>highlight <% end %>" >
         <td><%= job.title %></td>
         <td><%= job.headquarters %></td>
         <td><%= job.job_description %></td>
