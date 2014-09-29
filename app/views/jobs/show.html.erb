@@ -1,6 +1,7 @@
 <p id="notice"><%= notice %></p>
 
-<% unless @job.paid %>
+<!-- if the invoice is not paid and has not expired -->
+<% if !@job.paid && !@job.bitcoin_invoice.is_expired? %>
   <div class="please-pay-up">
     Your ad is ready to be published! <a href=
       <% if Rails.env.development? %>

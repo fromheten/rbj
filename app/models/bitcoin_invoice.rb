@@ -30,4 +30,11 @@ class BitcoinInvoice < ActiveRecord::Base
       return false
     end
   end
+
+  def is_expired?
+    invoice = BitcoinInvoice.bitpay_client.get("invoice/#{attributes['bitpay_id']}")
+    status = invoice["status"]
+
+    return true if status == "expired" else return false
+  end
 end
