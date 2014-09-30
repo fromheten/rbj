@@ -7,7 +7,7 @@ class BitcoinInvoice < ActiveRecord::Base
   def initialize(arguments = {}, options = {})
     super
     self.bitpay_invoice = BitcoinInvoice.bitpay_client.post('invoice', {
-      price: 0.01,
+      price: price,
       currency: 'USD',
       redirectURL: "http://example.org/jobs/#{self.job_id}" #FIXME
     })

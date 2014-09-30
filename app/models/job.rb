@@ -9,9 +9,19 @@ class Job < ActiveRecord::Base
 
   private
   def create_invoice(arguments = {})
+    if attributes["highlight"]
+      price = 199 + 49
+    else
+      price = 199
+    end
+    if Rails.env.development?
+      puts "debug: when developing price is 99% off. That's why life on testnet is freaking sweeet"
+      price = price * 0.01
+    end
+
     self.bitcoin_invoice = BitcoinInvoice.create({
       job_id: id,
-      price: 0.01,
+      price: price,
       currency: 'USD',
       notificationEmail: "josefsson.martin@gmail.com"
     })
