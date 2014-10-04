@@ -13,6 +13,9 @@
 
 ActiveRecord::Schema.define(version: 20140815190337) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "bitcoin_invoices", force: true do |t|
     t.integer  "job_id"
     t.string   "bitpay_id"
@@ -23,7 +26,7 @@ ActiveRecord::Schema.define(version: 20140815190337) do
     t.datetime "updated_at"
   end
 
-  add_index "bitcoin_invoices", ["job_id"], name: "index_bitcoin_invoices_on_job_id"
+  add_index "bitcoin_invoices", ["job_id"], name: "index_bitcoin_invoices_on_job_id", using: :btree
 
   create_table "jobs", force: true do |t|
     t.string   "title"
