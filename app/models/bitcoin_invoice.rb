@@ -12,6 +12,9 @@ class BitcoinInvoice < ActiveRecord::Base
       redirectURL: "http://example.org/jobs/#{self.job_id}" #FIXME
     })
     self.bitpay_id = @bitpay_invoice["id"]
+    puts "[[[[[[[[[[]]]]]]]]]]"
+    puts self.inspect
+    puts self.bitpay_invoice.inspect
     self.save
   end
 
