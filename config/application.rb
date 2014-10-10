@@ -27,15 +27,26 @@ module Rbj
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     # config.i18n.default_locale = :de
 
-    # Email settings ##FIXME
+    # Email settings
     config.action_mailer.delivery_method = :smtp
     config.action_mailer.perform_deliveries = true
+    # GMAIL
+    # config.action_mailer.smtp_settings = {
+      # address:              'smtp.gmail.com',
+      # port:                 587,
+      # domain:               'gmail.com',
+      # user_name:            ENV["gmail_username"],
+      # password:             ENV["gmail_password"],
+      # authentication:       'plain',
+      # enable_starttls_auto: true
+    # }
+    # Gigahost
     config.action_mailer.smtp_settings = {
-      address:              'smtp.gmail.com',
-      port:                 587,
-      domain:               'gmail.com',
-      user_name:            ENV["gmail_username"],
-      password:             ENV["gmail_password"],
+      address:              'smtp.gigahost.dk',
+      puts:                 587,
+      domain:               "remotebitcoinjobs.com",
+      user_name:            ENV["gigahost_username"],
+      password:             ENV["gigahost_password"],
       authentication:       'plain',
       enable_starttls_auto: true
     }
