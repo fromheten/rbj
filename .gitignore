@@ -16,3 +16,6 @@
 /tmp
 
 postgrescommand
+
+# Ignore application configuration
+/config/application.yml
