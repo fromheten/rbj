@@ -43,7 +43,7 @@ module Rbj
     # Gigahost
     config.action_mailer.smtp_settings = {
       address:              'smtp.gigahost.dk',
-      puts:                 587,
+      port:                 587,
       domain:               "remotebitcoinjobs.com",
       user_name:            ENV["gigahost_username"],
       password:             ENV["gigahost_password"],
