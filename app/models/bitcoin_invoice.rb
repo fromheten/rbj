@@ -6,12 +6,14 @@ class BitcoinInvoice < ActiveRecord::Base
 
   def initialize(arguments = {}, options = {})
     super
-    bitpay_client = BitPay::Client.new('vOT1Eq1ULYBWRS35wronKtHMbYYOSXDgLsL6x2U44' , {api_uri: "https://test.bitpay.com/api"}) #TEST ONE
+    bitpay_client = self.class.bitpay_client
+      
+      #BitPay::Client.new('vOT1Eq1ULYBWRS35wronKtHMbYYOSXDgLsL6x2U44' , {api_uri: "https://test.bitpay.com/api"}) #TEST ONE
 
     self.bitpay_invoice = bitpay_client.post('invoice', {
       price: price,
       currency: 'USD',
-      redirectURL: "http://example.org/jobs/#{self.job_id}" #FIXME
+      redirectURL: "http://remotebitcoinjobs.com/jobs/#{self.job_id}"
     })
     self.bitpay_id = @bitpay_invoice["id"]
     puts "[[[[[[[[[[]]]]]]]]]]"
@@ -22,7 +24,7 @@ class BitcoinInvoice < ActiveRecord::Base
 
   def self.bitpay_client
     if Rails.env.production?
-      # BitPay::Client.new 'OWR0fNlPRA7TphMICYWFqmNnxLAaa22jMhBsUqtew' #REAL ONE
+      BitPay::Client.new 'OWR0fNlPRA7TphMICYWFqmNnxLAaa22jMhBsUqtew' #REAL ONE
     else
       BitPay::Client.new('vOT1Eq1ULYBWRS35wronKtHMbYYOSXDgLsL6x2U44' , {api_uri: "https://test.bitpay.com/api"}) #TEST ONE
     end
