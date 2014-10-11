@@ -1,8 +1,8 @@
 class JobMailer < ActionMailer::Base
-  default from: "from@example.com"
+  default from: "hello@remotebitcoinjobs.com"
 
   def welcome_email(job)
     @job = job
-    mail(to: "josefsson.martin@gmail.com", subject: "It works!")
+    mail(to: @job[:email], subject: "Welcome to Remote Bitcoin Jobs")
   end
 end
