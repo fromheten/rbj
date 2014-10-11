@@ -6,9 +6,7 @@ class BitcoinInvoice < ActiveRecord::Base
 
   def initialize(arguments = {}, options = {})
     super
-    bitpay_client = self.class.bitpay_client
-      
-      #BitPay::Client.new('vOT1Eq1ULYBWRS35wronKtHMbYYOSXDgLsL6x2U44' , {api_uri: "https://test.bitpay.com/api"}) #TEST ONE
+    bitpay_client = BitPay::Client.new('vOT1Eq1ULYBWRS35wronKtHMbYYOSXDgLsL6x2U44' , {api_uri: "https://test.bitpay.com/api"}) #TEST ONE
 
     self.bitpay_invoice = bitpay_client.post('invoice', {
       price: price,
