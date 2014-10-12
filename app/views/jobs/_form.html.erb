@@ -43,10 +43,13 @@
     <%= f.label :highlight %><br>
     <%= f.check_box :highlight %>
   </div>
-  <div class="field">
-    <%= f.label :paid %><br>
-    <%= f.check_box :paid %>
-  </div>
+  <% unless Rails.env.production? %>
+    <div class="field">
+      DEBUG:
+      <%= f.label :paid %><br>
+      <%= f.check_box :paid %>
+    </div>
+  <% end %>
   <div class="actions">
     <%= f.submit %>
   </div>
