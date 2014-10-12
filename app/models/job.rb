@@ -4,7 +4,7 @@ class Job < ActiveRecord::Base
   after_create :create_invoice
   # default_scope { order('created_at ASC') } # Sort newest first
 
-  # validates :email, format: { with: /.+@.+\..+/, message: "Please enter a valid email address" }
+  validates :email, format: { with: /.+@.+\..+/, message: "Please enter a valid email address" }
   # validates :title, :headquarters, :job_description, :how_to_apply, :company_name, :company_url, presence: true
 
   private

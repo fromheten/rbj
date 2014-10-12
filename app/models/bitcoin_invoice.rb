@@ -6,7 +6,11 @@ class BitcoinInvoice < ActiveRecord::Base
 
   def initialize(arguments = {}, options = {})
     super
-    bitpay_client = BitPay::Client.new('vOT1Eq1ULYBWRS35wronKtHMbYYOSXDgLsL6x2U44' , {api_uri: "https://test.bitpay.com/api"}) #TEST ONE
+    if Rails.env.development? or Rails.env.test?
+      bitpay_client = BitPay::Client.new(ENV["bitpay_testnet_apikey"], {api_uri: "https://test.bitpay.com/api"}) #TEST ONE
+    else
+      bitpay_client = BitPay::Client.new ENV["bitpay_apikey"] #REAL ONE
+    end
 
     self.bitpay_invoice = bitpay_client.post('invoice', {
       price: price,
@@ -22,9 +26,9 @@ class BitcoinInvoice < ActiveRecord::Base
 
   def self.bitpay_client
     if Rails.env.production?
-      BitPay::Client.new 'OWR0fNlPRA7TphMICYWFqmNnxLAaa22jMhBsUqtew' #REAL ONE
+      BitPay::Client.new ENV["bitpay_apikey"] #REAL ONE
     else
-      BitPay::Client.new('vOT1Eq1ULYBWRS35wronKtHMbYYOSXDgLsL6x2U44' , {api_uri: "https://test.bitpay.com/api"}) #TEST ONE
+      BitPay::Client.new(ENV["bitpay_testnet_apikey"], {api_uri: "https://test.bitpay.com/api"}) #TEST ONE
     end
   end
 
