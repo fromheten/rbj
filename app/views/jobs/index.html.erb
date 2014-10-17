@@ -6,6 +6,7 @@
 <% end %>
 
 <ul class="job-list">
+
   <% @jobs.each do |job| %>
     <li class="<% if job.highlight %>highlight<% end %>" >
 
@@ -17,9 +18,14 @@
 
     <%= link_to(job) do %>
       <%= job.title %>, <%= job.company_name %>, <%= job.headquarters %>
+
+      <span class="date">
+        <%= job.created_at.strftime("%B") %> <%= job.created_at.day %>
+      </span>
     <% end %>
 
     </li>
   <% end %>
+
 </ul>
 <br>
