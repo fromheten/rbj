@@ -22,14 +22,33 @@
   </head>
 
   <body>
-
   <div class="row">
-    <!-- <div class="large&#45;12 columns"> -->
-      <%= yield %>
-    <!-- </div> -->
+    <div class="large-4 columns">
+      <img src="http://placekitten.com/g/255/255" class="logo"/>
+    </div>
+    <div class="large-4 columns copy-text">
+      We find and list you the jobs that aren't restricted by commutes or a particular geografic area, internationally
+    </div>
+    <div class="large-4 columns">
+      Share of Twitter or whatever
+    </div>
   </div>
 
+  <div class="row">
+    <div class="large-12 columns">
+    <%= yield %>
+    </div>
+  </div>
 
-    <%= javascript_include_tag "application" %>
+  <footer class="row">
+    <div class="small-3 small-centered columns">
+      <p>Contact us<br/>
+      +49 12345678<br/>
+      <a href="mailto:hello@remotebitcoinjobs.com">email</a>
+  </div>
+
+  </footer>
+
+  <%= javascript_include_tag "application" %>
   </body>
 </html>

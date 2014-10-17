@@ -14,3 +14,21 @@
  *= require_self
  *= require foundation_and_overrides
  */
+
+.debug {
+  background-color: tomato !important;
+}
+header {
+  .logo {
+    height: 255px;
+    width: 255px;
+  }
+}
+footer {
+  text-align: center;
+}
+
+// div.container {
+  // background-color: tomato;
+  // margin: 10px;
+// }
