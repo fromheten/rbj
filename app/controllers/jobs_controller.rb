@@ -19,9 +19,9 @@ class JobsController < ApplicationController
       else
         @job.paid = false
       end
-      flash[:notice] = "Checking payment #{@job.bitcoin_invoice.is_paid?}. Job.paid: #{@job.paid}"
+      # flash[:notice] = "Checking payment #{@job.bitcoin_invoice.is_paid?}. Job.paid: #{@job.paid}"
     else
-      flash[:notice] = "Not checking payment"
+      # flash[:notice] = "Not checking payment"
       @job.paid
     end
 
