@@ -2,11 +2,31 @@
 <html>
   <head>
     <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+
+    <style>
+* {
+  font-family: Helvetica, Arial, sans-serif;
+}
+a.button {
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 1.2em;
+  background-color: ForestGreen;
+  padding: 5px;
+  color: #eee;
+  text-decoration: none;
+  border-radius: 2px;
+  box-shadow: 1px 1px 0px 1px #aaa;
+}
+
+a.button:active {
+  background-color: green;
+}
+    </style>
   </head>
   <body>
     <h1>Thank you for using Remote Bitcoin Jobs</h1>
     <p>
-    You have successfully created a job listing. To verify your email and activate the listing, visit this link in your browser: <a href="http://remotebitcoinjobs.com/jobs/<%= @job.id %>">JOB</a>
+    You have successfully created a job listing. To verify your email and activate the listing, <a href="http://remotebitcoinjobs.com/jobs/<%= @job.id %>" class="button">Click Here</a>
     </p>
 
     <p>Thank you, and have a great day! /Martin</p>
