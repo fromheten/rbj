@@ -1,14 +1,25 @@
-<h1>Listing jobs</h1>
+<%= link_to(new_job_path) do %>
+  <span class="button">
+    Post a Job<br/>
+    $199 for 30 days
+  </span>
+<% end %>
 
-<ul>
+<ul class="job-list">
   <% @jobs.each do |job| %>
     <li class="<% if job.highlight %>highlight<% end %>" >
-      <%= link_to(job) do %>
-        <%= job.title %> at <%= job.company_name %> from <%= job.headquarters %>
-      <% end %>
+
+    <% if job.created_at > 1.day.ago %>
+      <span class="new-job-flair">
+        NEW
+      </span>
+    <% end %>
+
+    <%= link_to(job) do %>
+      <%= job.title %>, <%= job.company_name %>, <%= job.headquarters %>
+    <% end %>
+
     </li>
   <% end %>
 </ul>
 <br>
-
-<%= link_to 'New Job', new_job_path, class: 'button' %>

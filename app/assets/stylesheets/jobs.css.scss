@@ -1,7 +1,23 @@
-// Place all the styles related to the jobs controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+ul.job-list {
+  .highlight {
+    background-color: rgba(255, 255, 150, 1);
+  }
 
-.highlight {
-  background-color: rgba(255, 255, 150, 1);
+  li {
+    list-style-type: none;
+    height: 2em;
+    padding-left: 3em;
+    margin-top: 2px;
+    margin-bottom: 2px;
+    background-color: #f2f2f2;
+
+    .new-job-flair {
+      background-color: tomato;
+      position: absolute;
+      padding: 0.2em;
+      left: 10px;
+
+      color: white;
+    }
+  }
 }
