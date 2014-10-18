@@ -10,7 +10,7 @@
   <% @jobs.each do |job| %>
     <li class="<% if job.highlight %>highlight<% end %>" >
 
-    <% if job.created_at > 1.day.ago %>
+    <% if job.created_at > 1.week.ago %>
       <span class="new-job-flair">
         NEW
       </span>
