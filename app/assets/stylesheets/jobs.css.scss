@@ -5,7 +5,7 @@ ul.job-list {
 
   li {
     list-style-type: none;
-    height: 3em;
+    min-height: 3em;
     padding-left: 3em;
     padding-right: 1em;
     margin-bottom: 3px;
@@ -21,12 +21,12 @@ ul.job-list {
       line-height: 3em;
     }
     .job-title {
-      color: #333;
-      font-size: 1.5em;
-      margin-right: 2em;
+      color: #888;
     }
     .job-company_name {
-      color: #888;
+      color: #333;
+      font-size: 1.1em;
+      margin-right: 1em;
     }
     .job-headquarters {
       color: #888;
@@ -43,7 +43,7 @@ ul.job-list {
       position: absolute;
       padding: 0.2em;
       margin-top: 8px;
-      left: 10px;
+      left: 1px;
 
       color: white;
     }

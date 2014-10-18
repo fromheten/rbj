@@ -17,8 +17,9 @@
     <% end %>
 
     <%= link_to(job) do %>
+      <span class="job-company_name"><%= job.company_name %></span>
       <span class="job-title"><%= job.title %></span>
-      <span class="job-company_name"><%= job.company_name %></span>, <span class="job-headquarters"><%= job.headquarters %></span>
+      <span class="job-headquarters"><%= job.headquarters %></span>
 
       <span class="date">
         <%= job.created_at.strftime("%B")[0..2] %> <%= job.created_at.day %>
