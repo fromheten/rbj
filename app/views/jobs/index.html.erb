@@ -21,7 +21,7 @@
       <span class="job-company_name"><%= job.company_name %></span>, <span class="job-headquarters"><%= job.headquarters %></span>
 
       <span class="date">
-        <%= job.created_at.strftime("%B") %> <%= job.created_at.day %>
+        <%= job.created_at.strftime("%B")[0..2] %> <%= job.created_at.day %>
       </span>
     <% end %>
 

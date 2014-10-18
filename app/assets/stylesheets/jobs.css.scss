@@ -49,3 +49,25 @@ ul.job-list {
     }
   }
 }
+
+.ad-box {
+  margin: 5px;
+
+  .company-information {
+    border-bottom: 1px solid black;
+  }
+  padding: 10px;
+  background-color: #eef4f4;
+
+  .title {
+    display: inline;
+    font-size: 2em;
+  }
+  .date {
+    display: inline;
+  }
+  h3.company-name h4.headquarters{
+    display: inline;
+    background-color: tomato;
+  }
+}

@@ -16,13 +16,15 @@
   	<title><%= content_for?(:title) ? yield(:title) : "Remote Bitcoin Jobs" %></title>
     <link rel="icon" type="image/png" href="favicon.png">
 
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,600,400|Varela+Round' rel='stylesheet' type='text/css'>
+
   	<%= stylesheet_link_tag    "application" %>
   	<%= javascript_include_tag "vendor/custom.modernizr" %>
     <%= csrf_meta_tags %>
   </head>
 
   <body>
-  <header class="row">
+  <header class="row application-head">
     <div class="large-4 columns">
       <img src="http://placekitten.com/g/255/255" class="logo"/>
     </div>
