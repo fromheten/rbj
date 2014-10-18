@@ -2,7 +2,9 @@ class Job < ActiveRecord::Base
   has_one :bitcoin_invoice
   accepts_nested_attributes_for :bitcoin_invoice
   after_create :create_invoice
-  # default_scope { order('created_at ASC') } # Sort newest first
+
+  default_scope { order(created_at: :desc) } # Sort newest first
+  # default_scope { group(:highlight).order(created_at: :desc)} # Sort newest first
 
   validates :email, format: { with: /.+@.+\..+/, message: "Please enter a valid email address" }
   validates :title, :headquarters, :job_description, :how_to_apply, :company_name, :company_url, presence: true
@@ -23,7 +25,7 @@ class Job < ActiveRecord::Base
       job_id: id,
       price: price,
       currency: 'USD',
-      notificationEmail: "josefsson.martin@gmail.com"
+      notificationEmail: email
     })
   end
 end
