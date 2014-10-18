@@ -8,6 +8,8 @@ class Job < ActiveRecord::Base
 
   validates :email, format: { with: /.+@.+\..+/, message: "Please enter a valid email address" }
   validates :title, :headquarters, :job_description, :how_to_apply, :company_name, :company_url, presence: true
+  validates :how_to_apply, format: URI.regexp
+  validates :company_url, format: URI.regexp
 
   private
   def create_invoice(arguments = {})
