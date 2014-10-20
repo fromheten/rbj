@@ -27,6 +27,7 @@
     <h3 class="company-name subheader"><%= @job.company_name %></h3>
     <h4 class="headquarters subheader">Headquarters: <%= @job.headquarters %></h4>
     <h5 class="company-url subheader"><a href="<%= @job.company_url %>"><%= @job.company_url %></a></h5>
+    <%= image_tag(@job.logo.url(:medium)) %>
   </section>
   <section class="job_description">
     <p>
