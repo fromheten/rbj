@@ -18,6 +18,7 @@
 <div class="ad-box">
 
   <section class="job-information">
+    <%= image_tag(@job.logo.url(:medium), class: "logo") %>
     <h1 class="title"><%= @job.title.upcase %></h1>
     <h3 class="date subheader">Posted 
       <%= @job.created_at.strftime("%B")[0..2] %> <%= @job.created_at.day %>
@@ -27,7 +28,6 @@
     <h3 class="company-name subheader"><%= @job.company_name %></h3>
     <h4 class="headquarters subheader">Headquarters: <%= @job.headquarters %></h4>
     <h5 class="company-url subheader"><a href="<%= @job.company_url %>"><%= @job.company_url %></a></h5>
-    <%= image_tag(@job.logo.url(:medium)) %>
   </section>
   <section class="job_description">
     <p>

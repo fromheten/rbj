@@ -70,4 +70,10 @@ ul.job-list {
     display: inline;
     background-color: tomato;
   }
+  img.logo {
+    position: absolute;
+    right: 30px; // Ugly hack
+    max-height: 170px;
+    max-width: 170px;
+  }
 }
