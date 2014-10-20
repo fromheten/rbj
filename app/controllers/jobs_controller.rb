@@ -15,9 +15,10 @@ class JobsController < ApplicationController
     if(Time.now.between?(@job.created_at.time, @job.created_at.time + 16.minute))
       if @job.bitcoin_invoice.is_paid?
         @job.paid = true
-        @job.save
+        @job.save!
       else
         @job.paid = false
+        @job.save!
       end
       # flash[:notice] = "Checking payment #{@job.bitcoin_invoice.is_paid?}. Job.paid: #{@job.paid}"
     else
