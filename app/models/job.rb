@@ -11,10 +11,14 @@ class Job < ActiveRecord::Base
   validates :how_to_apply, format: URI.regexp
   validates :company_url, format: URI.regexp
 
+  has_attached_file :logo, :styles => { :medium => "300x300>" }
+  validates_attachment_content_type :logo, :content_type => /\Aimage\/.*\Z/
+
   private
   def create_invoice(arguments = {})
+    # This is where pricing happens
     if attributes["highlight"]
-      price = 199 + 49
+      price = 199 + 49 #usd
     else
       price = 199
     end

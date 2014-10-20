@@ -19,3 +19,6 @@ postgrescommand
 
 # Ignore application configuration
 /config/application.yml
+
+# Uploaded images
+/public/system

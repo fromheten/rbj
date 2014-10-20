@@ -18,6 +18,7 @@
 <div class="ad-box">
 
   <section class="job-information">
+    <%= image_tag(@job.logo.url(:medium), class: "logo") %>
     <h1 class="title"><%= @job.title.upcase %></h1>
     <h3 class="date subheader">Posted 
       <%= @job.created_at.strftime("%B")[0..2] %> <%= @job.created_at.day %>
