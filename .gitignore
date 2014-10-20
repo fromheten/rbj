@@ -21,4 +21,4 @@ postgrescommand
 /config/application.yml
 
 # Uploaded images
-/public/system
+public/system/
