@@ -4,8 +4,12 @@ class JobsController < ApplicationController
   # GET /jobs
   # GET /jobs.json
   def index
-    # @jobs = Job.all
-    @jobs = Job.where(paid: true, created_at: (Time.now - 1.month)..Time.now)
+    ## TODO Make this a named scope "valid" or something
+    if params[:tag]
+      @jobs = Job.tagged_with(params[:tag]).where(paid: true, created_at: (Time.now - 1.month)..Time.now)
+    else
+      @jobs = Job.where(paid: true, created_at: (Time.now - 1.month)..Time.now)
+    end
   end
 
   # GET /jobs/1
@@ -45,7 +49,6 @@ class JobsController < ApplicationController
         JobMailer.welcome_email(@job).deliver
 
         format.html { redirect_to @job.bitcoin_invoice.bitpay_invoice["url"], notice: 'Job was successfully created.' }
-        # format.html { redirect_to @job, notice: 'Job was successfully created.' }
         format.json { render :show, status: :created, location: @job }
       else
         format.html { render :new }
@@ -62,6 +65,6 @@ class JobsController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def job_params
-    params.require(:job).permit(:title, :headquarters, :job_description, :how_to_apply, :company_name, :company_url, :email, :highlight, :paid, :logo)
+    params.require(:job).permit(:title, :headquarters, :job_description, :how_to_apply, :company_name, :company_url, :email, :highlight, :paid, :logo, :tag_list)
   end
 end

@@ -51,6 +51,7 @@ module Rbj
       enable_starttls_auto: true
     }
 
+    ActsAsTaggableOn.force_lowercase = true
 
   end
 end
