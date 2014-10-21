@@ -51,6 +51,7 @@ gem 'bitpay-client', :require => 'bitpay'
 
 group :development, :test do
   gem 'rspec-rails'
+  gem 'guard-livereload', require: false
 end
 
 ruby "2.1.2" # Heroku relies on this
