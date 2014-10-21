@@ -44,8 +44,8 @@
     <%= f.text_field :email %>
   </div>
   <div class="field">
-    <%= f.label :tag_list %><br>
-    <%= f.text_field :tag_list %>
+    <%= f.label :category %><br>
+    <%= f.select :tag_list, [['Programming','programming'],['Design','design'],['Copywriting','copywriting']] %>
   </div>
   <div class="field">
     <%= f.label :highlight %> for only 49$<br>
@@ -55,6 +55,7 @@
     <div class="field">
       DEBUG:
       <%= f.label :paid %><br>
+
       <%= f.check_box :paid %>
     </div>
   <% end %>
