@@ -6,6 +6,8 @@ require File.expand_path('../config/application', __FILE__)
 task :deploy do
   puts "=> Pushing to Heroku..."
   sh "git push heroku master"
+  puts "=> Migrate Heroku Database..."
+  sh "heroku run 'rake db:migrate'"
   puts "=> Updating ENV variables..."
   sh "bundle exec figaro heroku:set"
   puts "=> Updating paperclip styles..."
