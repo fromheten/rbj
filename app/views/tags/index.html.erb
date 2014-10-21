@@ -1,21 +1,9 @@
 <h2>Categories</h2>
 <ul>
-  <li><a href="/categories/programming">Programming Jobs</a></li>
-  <li><a href="/categories/design">Design Jobs</a></li>
-  <li><a href="/categories/copywriting">Copywriting Jobs</a></li>
-
+  <%# TODO: Make some global array of approved tags %>
+  <% ["programming", "design", "copywriting"].each do |tag| %>
+    <li>
+    <%= link_to "#{tag.titlecase}", tag_path(tag) %>
+    </li>
+  <% end %>
 </ul>
-
-<!--
-<% if ActsAsTaggableOn::Tag.count > 0 %>
-  <h3>All tags (This is only for debugging - I think this should not be in the final version</h3>
-  <ul>
-    <% @tags.each do |tag|%>
-      <li>
-        <%# TODO this should be a link_to() %>
-        <a href="/categories/<%= tag.name %>"><%= tag.name.titlecase %> Jobs</a>
-      </li>
-    <% end %>
-  </ul>
-<% end %>
--->
