@@ -4,8 +4,12 @@ class JobsController < ApplicationController
   # GET /jobs
   # GET /jobs.json
   def index
-    # @jobs = Job.all
-    @jobs = Job.where(paid: true, created_at: (Time.now - 1.month)..Time.now)
+    ## TODO Make this a named scope "valid" or something
+    if params[:tag]
+      @jobs = Job.tagged_with(params[:tag]).where(paid: true, created_at: (Time.now - 1.month)..Time.now)
+    else
+      @jobs = Job.where(paid: true, created_at: (Time.now - 1.month)..Time.now)
+    end
   end
 
   # GET /jobs/1
