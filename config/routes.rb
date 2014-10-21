@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  get 'tags/:tag', to: 'jobs#index', as: :tag
+  get 'category/:tag', to: 'jobs#index', as: :tag
 
   resources :jobs, except: [:edit, :update, :destroy]
 
