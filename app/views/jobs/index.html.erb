@@ -6,7 +6,7 @@
   <% else %>
     <h2>All Jobs</h2>
   <% end %>
-  <% if @jobs.count %>
+  <% if @jobs.count == 0 %>
     <div class="nothing-here-sorry">
       <img src="/icons/sad_ipod.png">
       <p>
