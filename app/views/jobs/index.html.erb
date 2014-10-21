@@ -25,11 +25,6 @@
         <%= job.created_at.strftime("%B")[0..2] %> <%= job.created_at.day %>
       </span>
     <% end %>
-
-
-    <p>
-      <%= raw job.tag_list.map { |t| link_to t, tag_path(t) }.join(', ') %>
-    </p>
     </li>
   <% end %>
 
