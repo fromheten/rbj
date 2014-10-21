@@ -6,16 +6,25 @@
   <% else %>
     <h2>All Jobs</h2>
   <% end %>
-  <% @jobs.each do |job| %>
-    <li class="<% if job.highlight %>highlight<% end %>" >
+  <% if @jobs.count %>
+    <div class="nothing-here-sorry">
+      <img src="/icons/sad_ipod.png">
+      <p>
+      Sorry, no programming jobs published yet. <br>
+      <%= link_to("Post yours", new_job_path) %> and get access to the best people, everywhere
+      </p>
+    </div>
+  <% else %>
+    <% @jobs.each do |job| %>
+      <li class="<% if job.highlight %>highlight<% end %>" >
 
-    <% if job.created_at > 1.week.ago %>
-      <span class="new-job-flair">
-        NEW
-      </span>
-    <% end %>
+        <% if job.created_at > 1.week.ago %>
+          <span class="new-job-flair">
+            NEW
+          </span>
+        <% end %>
 
-    <%= link_to(job) do %>
+      <%= link_to(job) do %>
       <span class="job-company_name"><%= job.company_name %></span>
       <span class="job-title"><%= job.title %></span>
       <span class="job-headquarters"><%= job.headquarters %></span>
@@ -26,6 +35,7 @@
     <% end %>
     </li>
   <% end %>
+<% end %>
 
 </ul>
 <br>
