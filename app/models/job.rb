@@ -14,6 +14,8 @@ class Job < ActiveRecord::Base
   has_attached_file :logo, :styles => { :medium => "300x300>" }
   validates_attachment_content_type :logo, :content_type => /\Aimage\/.*\Z/
 
+  acts_as_taggable
+
   private
   def create_invoice(arguments = {})
     # This is where pricing happens
