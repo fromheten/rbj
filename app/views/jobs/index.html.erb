@@ -1,5 +1,10 @@
 <ul class="job-list">
 
+  <% if @tag %>
+    <h2><%= @tag.titlecase %> Jobs</h2>
+  <% else %>
+    <h2>All Jobs</h2>
+  <% end %>
   <% @jobs.each do |job| %>
     <li class="<% if job.highlight %>highlight<% end %>" >
 

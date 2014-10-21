@@ -6,6 +6,7 @@ class JobsController < ApplicationController
   def index
     ## TODO Make this a named scope "valid" or something
     if params[:tag]
+      @tag = params[:tag]
       @jobs = Job.tagged_with(params[:tag]).where(paid: true, created_at: (Time.now - 1.month)..Time.now)
     else
       @jobs = Job.where(paid: true, created_at: (Time.now - 1.month)..Time.now)
