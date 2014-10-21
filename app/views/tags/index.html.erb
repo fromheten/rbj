@@ -3,7 +3,7 @@
   <%# TODO: Make some global array of approved tags %>
   <% ["programming", "design", "copywriting"].each do |tag| %>
     <li>
-    <%= link_to "#{tag.titlecase}", tag_path(tag) %>
+    <%= link_to tag.titlecase, tag_path(tag) %>
     </li>
   <% end %>
 </ul>
