@@ -4,12 +4,13 @@ a.back-link {
   top: 5px;
   size: 1.7em;
   border: 1px solid rgba(43, 166, 203, 1); // Foundation default #mainColor
-  border-radius: 5px;
-  padding: 3px;
+  border-radius: 4px;
+  padding: 5px;
+  margin: 15px;
 
   &:active {
-    border: 1px solid rgba(43, 166, 203, 0.5);
-    color: rgba(43, 166, 203, 0.5)
+    border: 1px solid rgba(43, 166, 203, 0.8);
+    color: rgba(43, 166, 203, 0.8)
   }
 }
 ul.job-list {
@@ -56,8 +57,10 @@ ul.job-list {
       background-color: tomato;
       position: absolute;
       padding: 0.2em;
-      margin-top: 8px;
+      vertical-align: middle;
+      margin-top: 6px;
       left: 1px;
+      border-radius: 1px;
 
       color: white;
 
@@ -69,6 +72,9 @@ ul.job-list {
 .ad-box {
   margin: 5px;
 
+  .job-description: {
+    padding-top: 50px;
+  }
   .company-information {
     border-bottom: 1px solid black;
   }

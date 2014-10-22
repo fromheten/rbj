@@ -18,13 +18,16 @@
 .debug {
   background-color: tomato !important;
 }
+body {
+  line-height: 1.5;
+}
 header.application-head {
   padding: 10px;
   .logo {
     height: 200px;
     width: 200px
   }
-  border-bottom: 1px solid grey;
+  border-bottom: 1px solid lightGrey;
 }
 footer {
   text-align: center;
