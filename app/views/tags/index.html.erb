@@ -1,7 +1,7 @@
 <h2>Categories</h2>
 <ul>
   <%# TODO: Make some global array of approved tags %>
-  <% ["programming", "design", "copywriting"].each do |tag| %>
+  <% WHITELISTED_TAGS.each do |tag| %>
     <li>
     <%= link_to tag.titlecase, tag_path(tag) %>
     </li>
