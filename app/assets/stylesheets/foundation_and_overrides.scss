@@ -125,9 +125,9 @@ $header-font-family: 'Varela Round', sans-serif;
 // $paragraph-aside-font-style: italic;
 
 // We use these to style <code> tags
-// $code-color: darken($alert-color, 15%);
-// $code-font-family: Consolas, 'Liberation Mono', Courier, monospace;
-// $code-font-weight: bold;
+$code-color: darken($alert-color, 15%);
+$code-font-family: "Source Code Pro", "Ubuntu Mono", Consolas, 'Liberation Mono', Courier, monospace;
+$code-font-weight: light;
 
 // We use these to style anchors
 // $anchor-text-decoration: none;
