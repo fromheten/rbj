@@ -93,9 +93,7 @@ ul.job-list {
     background-color: tomato;
   }
   img.logo {
-    position: absolute;
-    right: 30px; // Ugly hack
-    max-height: 170px;
-    max-width: 170px;
+    // overflow: auto;
+    // zoom: 1;
   }
 }

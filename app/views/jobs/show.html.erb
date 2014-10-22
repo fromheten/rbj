@@ -18,19 +18,25 @@
 
 <div class="ad-box">
 
-  <section class="job-information">
-    <% if !@job.logo.size.nil? %>
-      <%= image_tag(@job.logo.url(:medium), class: "logo") %>
-    <% end %>
-    <h1 class="title"><%= @job.title.upcase %></h1>
-    <h3 class="date subheader">Posted 
-      <%= @job.created_at.strftime("%B")[0..2] %> <%= @job.created_at.day %>
-    </h3>
-  </section>
-  <section class="company-information">
+  <section class="row job-information company-information">
+    <div class="large-8 columns">
+      <h1 class="title"><%= @job.title.upcase %></h1>
+      <h3 class="date subheader">Posted 
+        <%= @job.created_at.strftime("%B")[0..2] %> <%= @job.created_at.day %>
+      </h3>
+
     <h3 class="company-name subheader"><%= @job.company_name %></h3>
     <h4 class="headquarters subheader">Headquarters: <%= @job.headquarters %></h4>
-    <h5 class="company-url subheader"><a href="<%= @job.company_url %>"><%= @job.company_url %></a></h5>
+    <h5 class="company-url subheader"><code><a href="<%= @job.company_url %>"><%= @job.company_url %></a></code></h5>
+    </div>
+
+    <div class="large-4 columns">
+      <% if !@job.logo.size.nil? %>
+        <%= image_tag(@job.logo.url(:medium), class: "logo") %>
+      <% end %>
+    </div>
+
+
   </section>
   <section class="job-description">
     <%= @job.job_description %>
