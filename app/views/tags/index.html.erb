@@ -7,3 +7,12 @@
     </li>
   <% end %>
 </ul>
+
+<div class="row">
+  <% WHITELISTED_TAGS.each do |tag| %>
+    <div class="large-3 columns debug">
+      <%= link_to tag.titlecase + " Jobs", tag_path(tag) %>
+    </div>
+  <% end %>
+</div>
+
