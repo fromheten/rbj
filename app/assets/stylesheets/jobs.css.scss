@@ -1,3 +1,17 @@
+a.back-link {
+  // < Back to Categories, etc
+  position: relative;
+  top: 5px;
+  size: 1.7em;
+  border: 1px solid rgba(43, 166, 203, 1); // Foundation default #mainColor
+  border-radius: 5px;
+  padding: 3px;
+
+  &:active {
+    border: 1px solid rgba(43, 166, 203, 0.5);
+    color: rgba(43, 166, 203, 0.5)
+  }
+}
 ul.job-list {
   .highlight {
     background-color: rgba(255, 255, 150, 1);

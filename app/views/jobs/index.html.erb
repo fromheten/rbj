@@ -1,7 +1,7 @@
+<%= link_to '< Back to all categories', root_path, class: "back-link" %>
 <ul class="job-list">
 
   <% if @tag %>
-    <%= link_to '< Back to all categories', root_path %>
     <h2><%= @tag.titlecase %> Jobs</h2>
   <% else %>
     <h2>All Jobs</h2>

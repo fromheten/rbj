@@ -1,6 +1,7 @@
+<%= link_to "< Back to #{@job.tag_list.last} jobs", tag_path(@job.tag_list.last), class: "back-link" %>
+
 <p id="notice"><%= notice %></p>
 
-<%= link_to "< Back to #{@job.tag_list.last} jobs", tag_path(@job.tag_list.last) %>
 
 <!-- if the invoice is not paid and has not expired -->
 <% if !@job.paid && !@job.bitcoin_invoice.is_expired? %>
