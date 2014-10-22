@@ -25,7 +25,10 @@ header.application-head {
   padding: 10px;
   .logo {
     height: 200px;
-    width: 200px
+    width: 200px;
+    display: block;
+    border: 1px solid lightGrey;
+    border-radius: 4px;
   }
   border-bottom: 1px solid lightGrey;
 }
