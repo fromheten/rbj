@@ -10,6 +10,7 @@ group :production do
   gem 'rails_12factor'
 end
 
+gem 'rails_serve_static_assets'
 gem 'figaro'
 
 gem 'sass-rails', '~> 4.0.3'
