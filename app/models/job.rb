@@ -12,7 +12,7 @@ class Job < ActiveRecord::Base
   validates :company_url, format: URI.regexp
 
   has_attached_file :logo, :styles => { :medium => "300x300>" }
-  validates_attachment_content_type :logo, :content_type => /\Aimage\/.*\Z/
+  validates_attachment_content_type :logo, content_type: ["image/jpg", "image/jpeg", "image/png"], message: "Logo has to be PNG or JPEG"
 
   acts_as_taggable
 
