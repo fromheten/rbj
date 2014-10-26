@@ -10,6 +10,7 @@
   line-height: 1.3;
   border-radius: $global-radius;
   border-color: darken(#ff7701, 20%);
+  transition: background-color 0.1s;
   &:hover {
     background-color: darken(#ff7701, 10%);
   }
