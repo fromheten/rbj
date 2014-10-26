@@ -1,10 +1,11 @@
+@import "foundation_and_overrides";
 a.back-link {
   // < Back to Categories, etc
   position: relative;
   top: 5px;
   size: 1.7em;
   border: 1px solid rgba(43, 166, 203, 1); // Foundation default #mainColor
-  border-radius: 4px;
+  border-radius: $global-radius;
   padding: 5px;
   margin: 15px;
 
