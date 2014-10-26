@@ -1,18 +1,32 @@
-<h2>Categories</h2>
-<ul>
-  <%# TODO: Make some global array of approved tags %>
-  <% WHITELISTED_TAGS.each do |tag| %>
-    <li>
-    <%= link_to tag.titlecase, tag_path(tag) %>
-    </li>
-  <% end %>
-</ul>
-
-<div class="row">
-  <% WHITELISTED_TAGS.each do |tag| %>
-    <div class="large-3 columns debug">
-      <%= link_to tag.titlecase + " Jobs", tag_path(tag) %>
-    </div>
-  <% end %>
+<div class="welcome-copy row">
+  <div class="large-8 columns">
+    We find you and list you the jobs that aren't restricted by commutes or a particular geographic area, internatinally. <a href="#">Learn more...</a>
+  </div>
+  <div class="large-4 columns">
+    <%= link_to(new_job_path) do %>
+      <span class="buy-button button">
+        Post a Job<br>
+        $199 for 30 days
+      </span>
+    <% end %>
+  </div>
 </div>
+<div class="ad-box">
+  <div class="row">
+    <% WHITELISTED_TAGS.each do |tag| %>
+      <div class="large-6 columns">
 
+        <%= link_to tag_path(tag) do %>
+
+          <section class="category">
+            <%= image_tag("icons/sad_ipod.png", class: "category-icon") %>
+            <span class="subheader">Find<br/></span>
+            <span class="category-name"><%= tag.upcase %><br/></span>
+            <span class="subheader">Jobs</span>
+          </section>
+        <% end %>
+
+      </div>
+    <% end %>
+  </div>
+</div>
