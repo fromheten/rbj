@@ -18,9 +18,11 @@ section.category {
   }
   div {
     h6 {
+      display: inline;
       font-size: 14px;
     }
     h5 {
+      display: inline;
       font-size: 16px;
       color: $primary-color;
     }
