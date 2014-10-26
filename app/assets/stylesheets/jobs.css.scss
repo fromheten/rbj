@@ -70,7 +70,9 @@ ul.job-list {
 }
 
 .ad-box {
-  margin: 5px;
+  margin: 0px;
+  padding: 20px;
+  background-color: #eef4f4;
 
   .job-description: {
     padding-top: 50px;
@@ -78,8 +80,6 @@ ul.job-list {
   .company-information {
     border-bottom: 1px solid lightGrey;
   }
-  padding: 10px;
-  background-color: #eef4f4;
 
   .title {
     display: inline;

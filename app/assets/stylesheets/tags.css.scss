@@ -1,7 +1,31 @@
+@import "foundation_and_overrides";
 // Place all the styles related to the tags controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .nothing-here-sorry {
   text-align: center;
+}
+section.category {
+  margin-bottom: 20px;
+  img {
+    width: 150px;
+    height: 150px;
+    float: left;
+
+    border-radius: 5px;
+    box-shadow: 5px 5px 1px rgba(100,100,100,0.5);
+  }
+  div {
+    h6 {
+      font-size: 14px;
+    }
+    h5 {
+      font-size: 16px;
+      color: $primary-color;
+    }
+    position: absolute;
+    left: 180px;
+    bottom: 5px;
+  }
 }

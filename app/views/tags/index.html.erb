@@ -20,9 +20,11 @@
 
           <section class="category">
             <%= image_tag("icons/sad_ipod.png", class: "category-icon") %>
-            <span class="subheader">Find<br/></span>
-            <span class="category-name"><%= tag.upcase %><br/></span>
-            <span class="subheader">Jobs</span>
+            <div>
+              <h6 class="subheader">Find</h6>
+              <h5 class="category-name"><%= tag.upcase %></h5>
+              <h6 class="subheader">Jobs</h6>
+          </div>
           </section>
         <% end %>
 
