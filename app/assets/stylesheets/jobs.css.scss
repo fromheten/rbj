@@ -4,7 +4,7 @@ a.back-link {
   position: relative;
   top: 5px;
   size: 1.7em;
-  border: 1px solid rgba(43, 166, 203, 1); // Foundation default #mainColor
+  border: 1px solid $primary-color; // Foundation default #mainColor
   border-radius: $global-radius;
   padding: 5px;
   margin: 15px;
